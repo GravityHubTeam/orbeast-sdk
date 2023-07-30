@@ -1,0 +1,5 @@
+node_modules/
+dist/
+
+# package.json is formatted by package managers, so we ignore it here
+package.json
