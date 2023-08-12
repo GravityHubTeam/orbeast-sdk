@@ -98,9 +98,6 @@ export type PvpBattleAction = {
     orbeast?: number | null;
     move?: number | null;
     statChanges?: PvpBattleActionStatChange[];
-    effects?: any;
-    status?: any;
-    statModifiers?: any;
 };
 export type PvpBattleActionStatChange = {
     target: PvpBattleSlotEnum;
