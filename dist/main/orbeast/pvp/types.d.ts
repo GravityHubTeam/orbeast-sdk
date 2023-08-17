@@ -92,17 +92,27 @@ export declare enum PvpBattleActionTypeEnum {
     Change = "Change",
     Run = "Run"
 }
+export declare enum PvpBattleActionHitTypeEnum {
+    Hit = "Hit",
+    Critical = "Critical",
+    Miss = "Miss"
+}
 export type PvpBattleAction = {
     origin: PvpBattleSlotEnum;
     type: PvpBattleActionTypeEnum;
     orbeast?: number | null;
     move?: number | null;
+    hitType?: PvpBattleActionHitTypeEnum;
     statChanges?: PvpBattleActionStatChange[];
 };
 export type PvpBattleActionStatChange = {
     target: PvpBattleSlotEnum;
     stat: PvpOrbeastMovementStatEnum;
     value: number;
+};
+export type PvpBattleResult = {
+    winnerProfile: number;
+    loserProfile: number;
 };
 export type PvpBattleRoundData = {
     temp: {
@@ -112,7 +122,6 @@ export type PvpBattleRoundData = {
         roundMoves: PvpBattleRoundPlayerMove[];
         prevResultA: PvpBattleRoundPlayerState;
         prevResultB: PvpBattleRoundPlayerState;
-        battleResult: null;
     };
     battleId: number;
     num: number;
@@ -125,12 +134,13 @@ export type PvpBattleRoundData = {
     actions: PvpBattleAction[];
     resultA: PvpBattleRoundPlayerState;
     resultB: PvpBattleRoundPlayerState;
+    battleResult: PvpBattleResult;
 };
 export type PvpBattleMoveResult = {
     actions: PvpBattleAction[];
     resultA: PvpBattleRoundPlayerState;
     resultB: PvpBattleRoundPlayerState;
-    battleResult: null;
+    battleResult: PvpBattleResult;
 };
 export type PvpBattleRoundCreateData = {
     ignoreTime?: boolean;
