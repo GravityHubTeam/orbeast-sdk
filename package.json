@@ -1,6 +1,6 @@
 {
     "name": "orbeast-sdk",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "Orbeast Fantasy Typescript SDK",
     "main": "dist/main/index.js",
     "typings": "dist/main/index.d.ts",

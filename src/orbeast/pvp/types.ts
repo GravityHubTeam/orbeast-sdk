@@ -118,11 +118,18 @@ export enum PvpBattleActionTypeEnum {
   Run = 'Run',
 }
 
+export enum PvpBattleActionHitTypeEnum {
+  Hit = 'Hit',
+  Critical = 'Critical',
+  Miss = 'Miss',
+}
+
 export type PvpBattleAction = {
   origin: PvpBattleSlotEnum
   type: PvpBattleActionTypeEnum
   orbeast?: number | null // only for type=Change
   move?: number | null // only for type=Move
+  hitType?: PvpBattleActionHitTypeEnum // only for type=Move
   statChanges?: PvpBattleActionStatChange[]
   // effects?: any
   // status?: any
@@ -135,6 +142,11 @@ export type PvpBattleActionStatChange = {
   value: number
 }
 
+export type PvpBattleResult = {
+  winnerProfile: number
+  loserProfile: number
+}
+
 // Container for all the data needed to calculate the round (excluding Battle setup)
 export type PvpBattleRoundData = {
   temp: {
@@ -145,7 +157,6 @@ export type PvpBattleRoundData = {
     roundMoves: PvpBattleRoundPlayerMove[]
     prevResultA: PvpBattleRoundPlayerState
     prevResultB: PvpBattleRoundPlayerState
-    battleResult: null
   }
   // BattleRound fields (full typed)
   battleId: number
@@ -159,13 +170,14 @@ export type PvpBattleRoundData = {
   actions: PvpBattleAction[]
   resultA: PvpBattleRoundPlayerState
   resultB: PvpBattleRoundPlayerState
+  battleResult: PvpBattleResult
 }
 
 export type PvpBattleMoveResult = {
   actions: PvpBattleAction[]
   resultA: PvpBattleRoundPlayerState
   resultB: PvpBattleRoundPlayerState
-  battleResult: null
+  battleResult: PvpBattleResult
 }
 
 export type PvpBattleRoundCreateData = {
